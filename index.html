@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I.E. Solidaridad III</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #8B1538, #A91B47);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: white;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a.btn-primary {
+            background: #007BFF;
+        }
+
+        .nav-menu a.btn-success {
+            background: #28A745;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f8ff" width="1200" height="600"/><polygon fill="%23ddd" points="0,400 400,300 800,350 1200,250 1200,600 0,600"/><rect fill="%238B1538" x="200" y="200" width="800" height="200" rx="10"/><text x="600" y="320" text-anchor="middle" fill="white" font-size="48" font-weight="bold">ESC. SOLIDARIDAD III</text></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .btn-register {
+            background: #007BFF;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn-register:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+        }
+
+        /* Activities Section */
+        .activities {
+            padding: 50px 20px;
+            background: #f8f9fa;
+        }
+
+        .activities h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #8B1538;
+            font-size: 2rem;
+        }
+
+        .activities-grid {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .activity-card {
+            min-width: 200px;
+            height: 150px;
+            background: #ddd;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .activity-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 20px;
+            background: white;
+            scroll-margin-top: 100px;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about h2 {
+            color: white;
+            background: #333;
+            padding: 20px;
+            margin: -20px -20px 40px -20px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+        }
+
+        .about-text h3 {
+            color: #8B1538;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #555;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .mission-vision-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mission-vision h2 {
+            background: #333;
+            color: white;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .mv-card h3 {
+            color: #8B1538;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .mv-card.mission {
+            border-left: 5px solid #8B1538;
+        }
+
+        .mv-card.vision {
+            border-left: 5px solid #007BFF;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .values h2 {
+            background: #8B1538;
+            color: white;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .value-item h4 {
+            color: #8B1538;
+            margin-bottom: 15px;
+        }
+
+        /* History Section */
+        .history {
+            background: #8B1538;
+            color: white;
+            padding: 80px 20px;
+        }
+
+        .history-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .history h2 {
+            background: #333;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .history-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .history-text p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .history-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .history-img {
+            width: 100%;
+            height: 150px;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        /* Authorities Section */
+        .authorities {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .authorities-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .authorities h2 {
+            background: #333;
+            color: white;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .authorities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .authorities-list {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .authorities-list h3 {
+            color: #8B1538;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .authorities-list ul {
+            list-style: none;
+        }
+
+        .authorities-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .authorities-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .authority-img {
+            width: 100%;
+            height: 120px;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-container,
+            .mv-grid,
+            .history-content,
+            .authorities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activities-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div style="width: 40px; height: 40px; background: white; border-radius: 5px; display: flex; align-items: center; justify-content: center; margin-right: 10px; color: #8B1538; font-weight: bold;">IE</div>
+                I.E.Solidaridad III
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about" onclick="scrollToSection('about')">Sobre Nosotros</a></li>
+                <li><a href="#" onclick="redirectTo('noticias')">Noticias</a></li>
+                <li><a href="#" onclick="redirectTo('contactanos')">Contáctanos</a></li>
+                <li><a href="#" onclick="redirectTo('registrate')" class="btn-primary">Regístrate</a></li>
+                <li><a href="#" onclick="redirectTo('iniciar-sesion')" class="btn-success">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Matrículas Abiertas</h1>
+            <a href="#" class="btn-register" onclick="redirectTo('matriculate')">MATRICÚLATE AHORA</a>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities">
+        <h2>Actividades Extracurriculares</h2>
+        <div class="activities-grid" id="activitiesGrid">
+            <div class="activity-card">Deportes</div>
+            <div class="activity-card">Arte</div>
+            <div class="activity-card">Música</div>
+            <div class="activity-card">Teatro</div>
+            <div class="activity-card">Ciencias</div>
+            <div class="activity-card">Tecnología</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>SOBRE NOSOTROS</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>LLEVAMOS AL MÁXIMO EL POTENCIAL DE NUESTROS ESTUDIANTES</h3>
+                <p>En SOLIDARIDAD III, creemos en una educación integral que forma no solo estudiantes académicamente competentes, sino también personas con valores, responsabilidad y compromiso con su comunidad.</p>
+                <p>Fundada en 1985, nuestra institución educativa se ha consolidado como una institución educativa comprometida con la excelencia, la innovación pedagógica y el desarrollo emocional de nuestros alumnos.</p>
+                <p>Contamos con un equipo docente altamente calificado, infraestructura moderna y un enfoque educativo centrado en el respeto, la creatividad y el pensamiento crítico.</p>
+                <p>Nuestra filosofía educativa abarca desde un ambiente seguro, inclusivo y estimulante, donde cada estudiante se protagonista de su propio aprendizaje.</p>
+            </div>
+            <div class="about-image">
+                <div style="width: 100%; height: 300px; background: linear-gradient(45deg, #8B1538, #A91B47); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">Estudiantes en formación</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Vision Section -->
+    <section class="mission-vision">
+        <div class="mission-vision-container">
+            <h2>NUESTRA MISIÓN Y VISIÓN</h2>
+            <div class="mv-grid">
+                <div class="mv-card mission">
+                    <h3>MISIÓN</h3>
+                    <p>Brindar una educación de calidad que forme estudiantes íntegros, innovadores y comprometidos con su entorno, desarrollando sus capacidades académicas, artísticas, deportivas y ciudadanas, en un ambiente inclusivo, plural y equitativo, en un ambiente de respeto y confianza.</p>
+                </div>
+                <div class="mv-card vision">
+                    <h3>VISIÓN</h3>
+                    <p>Ser una institución educativa reconocida por su excelencia académica y formación integral, comprometida con la formación de ciudadanos críticos y propositivos que contribuyan al desarrollo de una sociedad más justa y equitativa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="values-container">
+            <h2>NUESTROS VALORES</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h4>Respeto</h4>
+                    <p>Valoramos la dignidad de cada persona y promovemos un ambiente de convivencia armoniosa.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Responsabilidad</h4>
+                    <p>Fomentamos el compromiso y la responsabilidad en cada acción y decisión.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Honestidad</h4>
+                    <p>Promovemos la transparencia y la sinceridad en todas nuestras relaciones.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Solidaridad</h4>
+                    <p>Cultivamos el espíritu de ayuda mutua y compromiso social.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Tolerancia</h4>
+                    <p>Respetamos la diversidad y promovemos la inclusión.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Responsabilidad ambiental</h4>
+                    <p>Formamos conciencia ecológica y cuidado del medio ambiente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history">
+        <div class="history-container">
+            <h2>NUESTRA HISTORIA</h2>
+            <div class="history-content">
+                <div class="history-text">
+                    <p>La Institución Educativa Solidaridad III fue fundada en 1985 con el objetivo de brindar educación de calidad a la comunidad. Durante estos años, hemos crecido y evolucionado, adaptándonos a los cambios educativos y tecnológicos.</p>
+                    <p>A lo largo de nuestra historia, hemos formado miles de estudiantes que hoy son profesionales exitosos y ciudadanos comprometidos con su comunidad.</p>
+                    <p>Continuamos trabajando para mantener nuestro compromiso con la excelencia educativa y la formación integral de nuestros estudiantes.</p>
+                </div>
+                <div class="history-images">
+                    <div class="history-img">Foto histórica 1</div>
+                    <div class="history-img">Foto histórica 2</div>
+                    <div class="history-img">Foto histórica 3</div>
+                    <div class="history-img">Foto histórica 4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authorities Section -->
+    <section class="authorities">
+        <div class="authorities-container">
+            <h2>AUTORIDADES</h2>
+            <div class="authorities-grid">
+                <div class="authorities-list">
+                    <h3>Equipo Directivo</h3>
+                    <ul>
+                        <li><strong>Director:</strong> Lic. María José López</li>
+                        <li><strong>Subdirector:</strong> Lic. Carlos Mendoza</li>
+                        <li><strong>Coord. Académica:</strong> Lic. Ana García</li>
+                        <li><strong>Coord. Disciplinar:</strong> Lic. Roberto Silva</li>
+                        <li><strong>Psicóloga:</strong> Lic. Carmen Vega</li>
+                        <li><strong>Secretaria:</strong> Sra. Patricia Ramírez</li>
+                    </ul>
+                </div>
+                <div class="authorities-list">
+                    <h3>Área Secundaria</h3>
+                    <ul>
+                        <li><strong>Coord. Secundaria:</strong> Lic. Pedro López</li>
+                        <li><strong>Coord. Tutoría:</strong> Lic. Elena Morales</li>
+                        <li><strong>Coord. Actividades:</strong> Lic. Diego Herrera</li>
+                        <li><strong>Coord. Deportes:</strong> Prof. Luis Castillo</li>
+                        <li><strong>Bibliotecaria:</strong> Lic. Rosa Medina</li>
+                        <li><strong>Auxiliar:</strong> Sr. Jorge Vargas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="authorities-images" style="margin-top: 30px;">
+                <div class="authority-img">Equipo Directivo</div>
+                <div class="authority-img">Profesores</div>
+                <div class="authority-img">Graduación</div>
+                <div class="authority-img">Evento Institucional</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Función para scroll suave a secciones
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Función para redireccionar a otras páginas
+        function redirectTo(page) {
+            // Aquí puedes cambiar las URLs según tus necesidades
+            const urls = {
+                'noticias': 'noticias.html',
+                'contactanos': 'contactanos.html',
+                'registrate': 'registro.html',
+                'iniciar-sesion': 'login.html',
+                'matriculate': 'matriculas.html'
+            };
+            
+            if (urls[page]) {
+                // Para propósito de demostración, mostramos una alerta
+                alert(`Redirigiendo a: ${page}`);
+                // Descomenta la siguiente línea cuando tengas las páginas reales
+                // window.location.href = urls[page];
+            }
+        }
+
+        // Scroll horizontal para actividades con rueda del mouse
+        document.getElementById('activitiesGrid').addEventListener('wheel', function(e) {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                this.scrollLeft += e.deltaY;
+            }
+        });
+
+        // Scroll suave en imágenes de historia y autoridades
+        document.querySelectorAll('.history-images, .authorities-images').forEach(container => {
+            container.addEventListener('wheel', function(e) {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    this.scrollLeft += e.deltaY;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
