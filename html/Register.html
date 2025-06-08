@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Solidaridad III</title>
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+    <div class="registro-fondo">
+        <form class="registro-formulario" autocomplete="off">
+            <h2>Regístrate</h2>
+            <div class="registro-grupo">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="registro-grupo">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+            <div class="registro-grupo">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" required>
+            </div>
+            <div class="registro-grupo">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+            </div>
+            <div class="registro-grupo">
+                <label for="confirmar">Confirmar contraseña</label>
+                <input type="password" id="confirmar" name="confirmar" required>
+            </div>
+            <button type="submit">Crear cuenta</button>
+            <div class="registro-extra">
+                <a href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
+            </div>
+            <div class="registro-volver">
+                <a href="index.html" class="boton-volver">← Volver al inicio</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
